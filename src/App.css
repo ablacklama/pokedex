@@ -32,7 +32,28 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
+}
+
+.navbar {
+  background-color: #212738;
+  height: 83px;
+  display: flex;
+  justify-content: center;
+}
+
+.search {
+  width: 353px;
+  max-width: 500px;
+  height: 42px;
+  border-radius: 23px;
+  border: none;
+  padding: 0 10px;
+  font-size: 16px;
+  background-color: #e8f0fe;
+  margin: 0 10px;
+  align-self: center;
 }

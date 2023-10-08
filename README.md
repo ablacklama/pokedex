@@ -1,3 +1,23 @@
+# Pokedex
+
+
+### Components
+
+| Name        | Description                                                                          |
+| ----------- | ------------------------------------------------------------------------------------ |
+| App         | The main component that holds the state of the app and renders the other components. |
+| PokemonPage | The main page that displays the nav bar and all the pokemon's information            |
+| NavBar      | The top navigation bar that holds the search bar.                                    |
+| SearchBox   | The search box that allows the user to search for a pokemon by name.                 |
+
+
+
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
