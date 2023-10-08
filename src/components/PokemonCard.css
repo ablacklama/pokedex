@@ -1,0 +1,46 @@
+.pokemon-card {
+    margin: auto;
+    margin-top: 5%;
+    flex-direction: column;
+    font-size: calc(10px + 2vmin);
+    color: white;
+}
+
+
+.textbox {
+    width: 300px;
+    justify-content: start;
+    vertical-align: text-top;
+    text-align: top;
+    padding-left: 10px;
+    padding-right: 10px;;
+    height: 50px;
+    background-color: #F97068;
+    flex-direction: row;
+}
+
+
+.name-text {
+    font-size: 20px;
+    position: relative; top: -10px;
+    float:left;
+    color: black;
+}
+
+.id-text {
+    font-size: 20px;
+    position: relative; top: -10px;
+    float:right;
+    color: black;
+}
+
+
+
+
+.pokemon-card {
+    border-radius: 50%;
+    width: 300px;
+    height: 300px;
+}
+
+

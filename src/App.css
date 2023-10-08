@@ -57,3 +57,10 @@
   margin: 0 10px;
   align-self: center;
 }
+
+.pokemonCard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
