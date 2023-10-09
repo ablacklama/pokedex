@@ -15,16 +15,44 @@ body,
 
 .search {
   width: 353px;
-  max-width: 500px;
   height: 42px;
+  max-width: 500px;
   border-radius: 23px;
   border: none;
-  padding: 0 10px;
+  padding: 0 0px;
   font-size: 16px;
   background-color: #EDF2EF;
   margin: 0 10px;
   align-self: center;
+  height: min-content;
+  position: relative;
+  top: 0px;
+  visibility: hidden;
 }
+
+.search-input {
+  height: inherit;
+  width: 100%;
+  position: relative;
+  background-color: #FFFFFF;
+  height: 42px;
+  border-radius: inherit;
+  padding: 0 10px;
+  border: none;
+  visibility: visible;
+}
+
+.search-input:focus {
+  outline: none !important;
+}
+
+.search-has-results:focus-within {
+  padding-bottom: 0px;
+  border: 1px solid black;
+  border-radius: 23px 23px 0px 0px;
+  visibility: visible;
+}
+
 
 .pokemonCard {
   display: flex;
@@ -36,4 +64,33 @@ body,
 .pokemon-page {
   background-color: #57886C;
   height: 100%;
+}
+
+.search-results-list {
+  padding: 0px;
+  margin: 0px;
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  left: 0;
+  z-index: 1000;
+  background-color: #FFFFFF;
+  overflow-y: auto;
+  max-height: 300px;
+  border-radius: 0px 0px 5px 5px;
+}
+
+.search-result-line {
+  border-top: .5px solid black;
+  height: 30px;
+  line-height: 30px;
+  list-style-type: none;
+  padding-left: 10px;
+  outline: none;
+}
+
+.search-result-line:hover,
+.search-result-line.active {
+  background-color: #D1D646;
+  cursor: pointer;
 }
