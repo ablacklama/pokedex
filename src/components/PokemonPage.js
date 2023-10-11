@@ -1,5 +1,5 @@
 import { NavBar } from "./NavBar";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { PokemonCard } from "./PokemonCard";
 
 
@@ -11,12 +11,10 @@ export const PokemonPage = () => {
     const [pokemon_url, setPokemonUrl] = useState('https://pokeapi.co/api/v2/pokemon/1/"')
 
 
-
-
     return (
         <div className="pokemon-page">
             <NavBar setPokemonName={setPokemonName} setPokemonUrl={setPokemonUrl} />
-            <PokemonCard pokemon_name={pokemon_name} pokemon_id="001" url="https://archives.bulbagarden.net/media/upload/f/fb/0001Bulbasaur.png" />
+            <PokemonCard pokemon_name={pokemon_name} pokemon_url={pokemon_url}/>
         </div>
     )
 }
