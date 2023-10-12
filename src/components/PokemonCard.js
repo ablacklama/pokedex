@@ -1,30 +1,45 @@
 import { NavBar } from "./NavBar";
 import "./PokemonCard.css";
-import { useState } from "react";
+import { useEffect, useState } from 'react';
 
 // main page that displays a pokemon
-export const PokemonCard = ({pokemon_name, pokemon_url}) => 
+export const PokemonCard = ({pokemon_name}) => 
 {
-    const [pokemon_id, setPokemonId] = useState(1);
-    const [pokemon_img, setPokemonImg] = useState("");
+    const [pokeomn_api_url, setPokemonApiUrl] = useState("https://pokeapi.co/api/v2/pokemon/")
+    const [pokemon_id, setPokemonId] = useState("000");
+    const [pokemon_img, setPokemonImg] = useState("https://wiki.p-insurgence.com/images/0/09/722.png");
     const [pokemon_types, setTypes] = useState(Array(2))
     const [pokemon_name_holder, setPokemonName] = useState('missingno'); 
     
 
     const setPokemonData = (data) => 
     {
-        setPokemonName(data.name)
-        setPokemonId(data.id)
-        setPokemonImg(data.sprites.front_default)
+        console.log(data);
+        setPokemonName(data.name);
+        setPokemonId(data.id);
+        console.log("test");
+        console.log(data["sprites"]["other"]["official-artwork"]["front_default"]);
+        
+        setPokemonImg(data["sprites"]["other"]["official-artwork"]["front_default"]);
     }
 
-
+    console.log(pokeomn_api_url+pokemon_name);
+    
     useEffect(() => {
-        fetch(pokemon_url+pokemon_name)
-            .then(response => response.json())
-            .then(data => setPokemonData(data))
-            .catch(error => console.log(error))
-    },[])
+        if (pokemon_name == "missingno")
+        {
+            setPokemonName("missingno");
+            setPokemonId("000");
+            setPokemonImg("https://wiki.p-insurgence.com/images/0/09/722.png");
+        }
+        else
+        {
+            fetch(pokeomn_api_url+pokemon_name)
+                .then(response => response.json())
+                .then(data => setPokemonData(data))
+                .catch(error => console.log(error))
+        }
+    },[pokemon_name])
 
 
 
@@ -38,16 +53,6 @@ export const PokemonCard = ({pokemon_name, pokemon_url}) =>
         </div>
     )
 }
-
-
-setPokemonData(data)
-{
-
-}
-
-
-
-
 
 
 
