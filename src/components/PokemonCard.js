@@ -1,4 +1,6 @@
 import { NavBar } from "./NavBar";
+import loading from "./pokeball.png"
+import missing from "./missingno.png"
 import "./PokemonCard.css";
 import { useEffect, useState } from 'react';
 
@@ -7,9 +9,10 @@ export const PokemonCard = ({pokemon_name}) =>
 {
     const [pokeomn_api_url, setPokemonApiUrl] = useState("https://pokeapi.co/api/v2/pokemon/")
     const [pokemon_id, setPokemonId] = useState("000");
-    const [pokemon_img, setPokemonImg] = useState("https://wiki.p-insurgence.com/images/0/09/722.png");
+    const [pokemon_img, setPokemonImg] = useState(missing);
     const [pokemon_types, setTypes] = useState(Array(2))
     const [pokemon_name_holder, setPokemonName] = useState('missingno'); 
+    const [loaded, setLoaded] = useState(false);
     
 
     const setPokemonData = (data) => 
@@ -17,10 +20,9 @@ export const PokemonCard = ({pokemon_name}) =>
         console.log(data);
         setPokemonName(data.name);
         setPokemonId(data.id);
-        console.log("test");
-        console.log(data["sprites"]["other"]["official-artwork"]["front_default"]);
-        
+        setTypes(data.types);
         setPokemonImg(data["sprites"]["other"]["official-artwork"]["front_default"]);
+        return Promise.resolve(data);
     }
 
     console.log(pokeomn_api_url+pokemon_name);
@@ -30,17 +32,17 @@ export const PokemonCard = ({pokemon_name}) =>
         {
             setPokemonName("missingno");
             setPokemonId("000");
-            setPokemonImg("https://wiki.p-insurgence.com/images/0/09/722.png");
+            setPokemonImg(missing);
         }
         else
         {
-            fetch(pokeomn_api_url+pokemon_name)
+            setLoaded(false);
+            fetch(pokeomn_api_url+pokemon_name.replace(/ /g, '-'))
                 .then(response => response.json())
                 .then(data => setPokemonData(data))
                 .catch(error => console.log(error))
         }
     },[pokemon_name])
-
 
 
     return (
@@ -49,7 +51,18 @@ export const PokemonCard = ({pokemon_name}) =>
                 <h1 className="name-text" >{pokemon_name_holder}</h1>
                 <h1 className="id-text">{pokemon_id}</h1>
             </div>
-            <img className="pokemon-card" src={pokemon_img} alt="pokemon image"/>
+                <img className="pokemon-card rotating" 
+                src={loading} 
+                alt="pokemon image"
+                style={loaded ? { display: 'none'} : {}}
+                />
+                
+                <img
+                className="pokemon-card"
+                style={loaded ? {} : { display: 'none' }}
+                src={pokemon_img}
+                onLoad={() => setLoaded(true)}
+                />
         </div>
     )
 }
