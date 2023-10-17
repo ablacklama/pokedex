@@ -1,4 +1,3 @@
-import { NavBar } from "./NavBar";
 import loading from "./pokeball.png"
 import missing from "./missingno.png"
 import "./PokemonCard.css";
@@ -48,9 +47,8 @@ export const PokemonCard = ({ pokemon_name }) => {
                 alt="pokemon image"
                 style={loaded ? { display: 'none' } : {}}
             />
-            <div className="pokemon-card bg-lightgrey ">
-                <div className="textbox"
-                    style={loaded ? {} : { display: 'none' }}>
+            <div className="pokemon-card bg-lightgrey " style={loaded ? {} : { display: 'none' }}>
+                <div className="textbox">
                     <h1 className="name-text " >{pokemon_name_holder}</h1>
                     <h1 className="name-text ">#{pokemon_id}</h1>
                 </div>
