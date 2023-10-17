@@ -26,7 +26,7 @@ export const PokemonCard = ({ pokemon_name }) => {
     console.log(pokeomn_api_url + pokemon_name);
 
     useEffect(() => {
-        if (pokemon_name == "missingno") {
+        if (pokemon_name === "missingno") {
             setPokemonName("missingno");
             setPokemonId("000");
             setPokemonImg(missing);
@@ -55,13 +55,14 @@ export const PokemonCard = ({ pokemon_name }) => {
                     <h1 className="name-text ">#{pokemon_id}</h1>
                 </div>
 
-
-                <img
-                    className="pokemon-card"
-                    style={loaded ? {} : { display: 'none' }}
-                    src={pokemon_img}
-                    onLoad={() => setLoaded(true)}
-                />
+                <div className="pokemon-card-body">
+                    <img
+                        className="pokemon-image"
+                        style={loaded ? {} : { display: 'none' }}
+                        src={pokemon_img}
+                        onLoad={() => setLoaded(true)}
+                    />
+                </div>
             </div>
         </div>
     )

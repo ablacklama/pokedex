@@ -7,6 +7,7 @@
   border-radius: 38px;
   min-width: 264px;
   max-width: 834px;
+  min-height: 697px;
 }
 
 .loading-ball {
@@ -62,8 +63,17 @@
   color: black;
 }
 
+.pokemon-image {
+  height: 299px;
+  width: 310px;
+  border: 1px solid black;
+  border-radius: 15px;
+}
 
 
+.pokemon-card-body {
+  padding: 10px 32px 10px 32px
+}
 
 
 .pokemon-card-img {
