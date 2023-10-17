@@ -94,7 +94,7 @@ export const SearchBox = ({ placeholder, setPokemonName, setPokemonUrl }) => {
     })
 
     return (
-        <div className='flex md:flex-row flex-col items-center md:space-x-2 space-y-1 '>
+        <div className='flex md:flex-row flex-col items-center md:space-x-2 space-y-1 md:space-y-0'>
             <div className={`search ${(search_results.length > 0) ? 'search-has-results' : ''} h-7 md:h-8 md:w-full text-center mt-2 md:mt-0`}>
                 <input id='pokemon-search-input' className="relative bg-white pl-1 w-52 md:w-full search-input"
                     type="search" placeholder={placeholder} onKeyDown={searchKeyDown} onInput={searchOnInput} />

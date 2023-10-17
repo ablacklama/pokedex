@@ -1,4 +1,15 @@
 .pokemon-card {
+  margin: 21px auto auto auto;
+  flex-direction: column;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  overflow: hidden;
+  border-radius: 38px;
+  min-width: 264px;
+  max-width: 834px;
+}
+
+.loading-ball {
   margin: auto;
   margin-top: 5%;
   flex-direction: column;
@@ -11,34 +22,46 @@
 
 
 .textbox {
-  width: 300px;
-  justify-content: start;
-  vertical-align: text-top;
-  text-align: top;
-  padding-left: 10px;
-  padding-right: 10px;
-  ;
-  height: 50px;
-  background-color: #F97068;
-  flex-direction: row;
+  width: 100%;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 16px;
+  height: 67px;
+  background-color: #9A9A9A;
+  font-size: 40px;
+  line-height: 40px;
+  font-family: 'Roboto-bold';
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: space-between;
 }
 
+@media only screen and (max-width: 768px) {
+  .textbox {
+    width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 13px;
+    height: 50px;
+    background-color: #9A9A9A;
+    font-size: 30px;
+    line-height: 30px;
+    font-family: 'Roboto-bold';
+
+  }
+
+  .textbox>h1 {
+    height: 30px;
+  }
+}
 
 .name-text {
-  font-size: 20px;
   position: relative;
-  top: -10px;
-  float: left;
+  filter: drop-shadow(rgb(98, 98, 98) 2px 3px 1px);
   color: black;
 }
 
-.id-text {
-  font-size: 20px;
-  position: relative;
-  top: -10px;
-  float: right;
-  color: black;
-}
 
 
 

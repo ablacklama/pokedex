@@ -5,18 +5,16 @@ import "./PokemonCard.css";
 import { useEffect, useState } from 'react';
 
 // main page that displays a pokemon
-export const PokemonCard = ({pokemon_name}) => 
-{
+export const PokemonCard = ({ pokemon_name }) => {
     const [pokeomn_api_url, setPokemonApiUrl] = useState("https://pokeapi.co/api/v2/pokemon/")
     const [pokemon_id, setPokemonId] = useState("000");
     const [pokemon_img, setPokemonImg] = useState(missing);
     const [pokemon_types, setTypes] = useState(Array(2))
-    const [pokemon_name_holder, setPokemonName] = useState('missingno'); 
+    const [pokemon_name_holder, setPokemonName] = useState('missingno');
     const [loaded, setLoaded] = useState(false);
-    
 
-    const setPokemonData = (data) => 
-    {
+
+    const setPokemonData = (data) => {
         console.log(data);
         setPokemonName(data.name);
         setPokemonId(data.id);
@@ -25,44 +23,46 @@ export const PokemonCard = ({pokemon_name}) =>
         return Promise.resolve(data);
     }
 
-    console.log(pokeomn_api_url+pokemon_name);
-    
+    console.log(pokeomn_api_url + pokemon_name);
+
     useEffect(() => {
-        if (pokemon_name == "missingno")
-        {
+        if (pokemon_name == "missingno") {
             setPokemonName("missingno");
             setPokemonId("000");
             setPokemonImg(missing);
         }
-        else
-        {
+        else {
             setLoaded(false);
-            fetch(pokeomn_api_url+pokemon_name.replace(/ /g, '-'))
+            fetch(pokeomn_api_url + pokemon_name.replace(/ /g, '-'))
                 .then(response => response.json())
                 .then(data => setPokemonData(data))
                 .catch(error => console.log(error))
         }
-    },[pokemon_name])
+    }, [pokemon_name])
 
 
     return (
-        <div className="pokemon-card">
-            <div className="textbox">
-                <h1 className="name-text" >{pokemon_name_holder}</h1>
-                <h1 className="id-text">{pokemon_id}</h1>
-            </div>
-                <img className="pokemon-card rotating" 
-                src={loading} 
+        <div>
+            <img className="loading-ball rotating"
+                src={loading}
                 alt="pokemon image"
-                style={loaded ? { display: 'none'} : {}}
-                />
-                
+                style={loaded ? { display: 'none' } : {}}
+            />
+            <div className="pokemon-card bg-lightgrey ">
+                <div className="textbox"
+                    style={loaded ? {} : { display: 'none' }}>
+                    <h1 className="name-text " >{pokemon_name_holder}</h1>
+                    <h1 className="name-text ">#{pokemon_id}</h1>
+                </div>
+
+
                 <img
-                className="pokemon-card"
-                style={loaded ? {} : { display: 'none' }}
-                src={pokemon_img}
-                onLoad={() => setLoaded(true)}
+                    className="pokemon-card"
+                    style={loaded ? {} : { display: 'none' }}
+                    src={pokemon_img}
+                    onLoad={() => setLoaded(true)}
                 />
+            </div>
         </div>
     )
 }
