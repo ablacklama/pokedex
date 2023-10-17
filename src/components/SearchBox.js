@@ -1,6 +1,10 @@
 import lunr from 'lunr';
 import { useEffect, useState } from 'react';
 
+function get_random(list) {
+    return list[Math.floor((Math.random() * list.length))];
+}
+
 export const SearchBox = ({ placeholder, setPokemonName, setPokemonUrl }) => {
     const [all_pokemon, setAllPokemon] = useState([])
 
@@ -78,6 +82,11 @@ export const SearchBox = ({ placeholder, setPokemonName, setPokemonUrl }) => {
         doSearch();
     }
 
+    const imFeelingLuckyClicked = () => {
+        document.getElementById('pokemon-search-input').value = get_random(all_pokemon).name
+        doSearch();
+    }
+
     // search_results = []
 
     var search_results_rendered = search_results.map((pokemon, idx) => {
@@ -85,9 +94,18 @@ export const SearchBox = ({ placeholder, setPokemonName, setPokemonUrl }) => {
     })
 
     return (
-        <div className={`search ${(search_results.length > 0) ? 'search-has-results' : ''}`}>
-            <input id='pokemon-search-input' className="search-input" type="search" placeholder={placeholder} onKeyDown={searchKeyDown} onInput={searchOnInput} />
-            <ul id='searchResultList' className='search-results-list'>{search_results_rendered}</ul>
+        <div className='flex md:flex-row flex-col items-center md:space-x-2 space-y-1 '>
+            <div className={`search ${(search_results.length > 0) ? 'search-has-results' : ''} h-7 md:h-8 md:w-full text-center mt-2 md:mt-0`}>
+                <input id='pokemon-search-input' className="relative bg-white pl-1 w-52 md:w-full search-input"
+                    type="search" placeholder={placeholder} onKeyDown={searchKeyDown} onInput={searchOnInput} />
+                <ul id='searchResultList' className='search-results-list'>{search_results_rendered}</ul>
+            </div>
+            <div className='text-white text-xs md:text-base'>
+                OR
+            </div>
+            <div className='text-yellow leading-none underline cursor-pointer' onClick={imFeelingLuckyClicked}>
+                I'm feeling lucky!
+            </div>
         </div>
     )
 }

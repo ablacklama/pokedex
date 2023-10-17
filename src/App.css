@@ -15,16 +15,13 @@ body,
 
 .search {
   width: 353px;
-  height: 42px;
   max-width: 500px;
   border-radius: 23px;
   border: none;
   padding: 0 0px;
   font-size: 16px;
   background-color: #EDF2EF;
-  margin: 0 10px;
   align-self: center;
-  height: min-content;
   position: relative;
   top: 0px;
   visibility: hidden;
@@ -32,10 +29,8 @@ body,
 
 .search-input {
   height: inherit;
-  width: 100%;
   position: relative;
   background-color: #FFFFFF;
-  height: 42px;
   border-radius: inherit;
   padding: 0 10px;
   border: none;
